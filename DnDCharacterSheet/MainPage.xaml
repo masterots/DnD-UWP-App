@@ -5,9 +5,109 @@
     xmlns:local="using:DnDCharacterSheet"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Loaded="Page_Loaded">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Pivot x:Name="rootPivot" Title="{Binding Name}">
+        <PivotItem Header="Overview">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Vertical" Height="Auto">
+                    <TextBlock Text="Strength"
+                                Style="{StaticResource SubtitleTextBlockStyle}"
+                                HorizontalAlignment="Center"/>
+                    <TextBlock Name="Strength" 
+                                Text="{Binding Strength}"
+                                Style="{StaticResource BodyTextBlockStyle}"
+                                HorizontalAlignment="Center"/>
+                    <TextBlock Name="StrengthModifier" 
+                                Text="{Binding StrengthModifier}"
+                                Style="{StaticResource BodyTextBlockStyle}"
+                                HorizontalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Vertical" Height="Auto">
+                    <TextBlock Text="Dexterity"
+                                Style="{StaticResource SubtitleTextBlockStyle}"
+                                HorizontalAlignment="Center"/>
+                    <TextBlock Name="Dexterity" 
+                                Text="{Binding Dexterity}"
+                                Style="{StaticResource BodyTextBlockStyle}"
+                                HorizontalAlignment="Center"/>
+                    <TextBlock Name="DexterityModifier" 
+                                Text="{Binding DexterityModifier}"
+                                Style="{StaticResource BodyTextBlockStyle}"
+                                HorizontalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Orientation="Vertical" Height="Auto">
+                    <TextBlock Text="Constitution"
+                                Style="{StaticResource SubtitleTextBlockStyle}"
+                                HorizontalAlignment="Center"/>
+                    <TextBlock Name="Constitution" 
+                                Text="{Binding Constitution}"
+                                Style="{StaticResource BodyTextBlockStyle}"
+                                HorizontalAlignment="Center"/>
+                    <TextBlock Name="ConstitutionModifier" 
+                                Text="{Binding ConstitutionModifier}"
+                                Style="{StaticResource BodyTextBlockStyle}"
+                                HorizontalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Column="3" Orientation="Vertical" Height="Auto">
+                    <TextBlock Text="Intelligence"
+                                Style="{StaticResource SubtitleTextBlockStyle}"
+                                HorizontalAlignment="Center"/>
+                    <TextBlock Name="Intelligence" 
+                                Text="{Binding Intelligence}"
+                                Style="{StaticResource BodyTextBlockStyle}"
+                                HorizontalAlignment="Center"/>
+                    <TextBlock Name="IntelligenceModifier" 
+                                Text="{Binding IntelligenceModifier}"
+                                Style="{StaticResource BodyTextBlockStyle}"
+                                HorizontalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Column="4" Orientation="Vertical" Height="Auto">
+                    <TextBlock Text="Wisdom"
+                                Style="{StaticResource SubtitleTextBlockStyle}"
+                                HorizontalAlignment="Center"/>
+                    <TextBlock Name="Wisdom" 
+                                Text="{Binding Wisdom}"
+                                Style="{StaticResource BodyTextBlockStyle}"
+                                HorizontalAlignment="Center"/>
+                    <TextBlock Name="WisdomModifier" 
+                                Text="{Binding WisdomModifier}"
+                                Style="{StaticResource BodyTextBlockStyle}"
+                                HorizontalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Column="5" Orientation="Vertical" Height="Auto">
+                    <TextBlock Text="Charisma"
+                               Style="{StaticResource SubtitleTextBlockStyle}"
+                                HorizontalAlignment="Center"/>
+                    <TextBlock Name="Charisma" 
+                                Text="{Binding Charisma}"
+                                Style="{StaticResource BodyTextBlockStyle}"
+                                HorizontalAlignment="Center"/>
+                    <TextBlock Name="CharismaModifier" 
+                                Text="{Binding CharismaModifier}"
+                                Style="{StaticResource BodyTextBlockStyle}"
+                                HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </PivotItem>
+        <PivotItem Header="Attacks">
+            <TextBlock Text="Content of pivot item 2."/>
+        </PivotItem>
+        <PivotItem Header="Items">
+            <TextBlock Text="Content of pivot item 3."/>
+        </PivotItem>
+    </Pivot>
 
-    </Grid>
 </Page>

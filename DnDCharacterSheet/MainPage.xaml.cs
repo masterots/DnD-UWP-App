@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,19 @@ namespace DnDCharacterSheet
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            using (var db = new DnDCharacterSheetContext())
+            {
+                var character = db.Characters
+                                .FromSql("SELECT * from characters join characterWeapons on characterWeapons.characterId = characters.id JOIN weapons on weapons.id = characterWeapons.weaponId where characters.id = 1")
+                                .ToList()
+                                .First();
+
+                rootPivot.DataContext = character;
+            }
         }
     }
 }
