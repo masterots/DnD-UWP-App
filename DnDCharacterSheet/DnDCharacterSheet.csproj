@@ -95,13 +95,16 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Enums\CostType.cs" />
+    <Compile Include="Enums\WeaponType.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model.cs" />
+    <Compile Include="Models\Armor.cs" />
+    <Compile Include="Models\Character.cs" />
     <Compile Include="Models\CharacterWeapon.cs" />
     <Compile Include="Models\Weapon.cs" />
-    <Compile Include="Models\WeaponType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
