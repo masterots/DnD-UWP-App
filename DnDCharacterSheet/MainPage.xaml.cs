@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DnDCharacterSheet.Controls;
+using DnDCharacterSheet.Enums;
+using DnDCharacterSheet.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +26,9 @@ namespace DnDCharacterSheet
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private string CurrentView = "overview";
+        private bool IsEditing = false;
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -30,14 +36,81 @@ namespace DnDCharacterSheet
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            using (var db = new DnDCharacterSheetContext())
-            {
-                var character = db.Characters
-                                .FromSql("SELECT * from characters join characterWeapons on characterWeapons.characterId = characters.id JOIN weapons on weapons.id = characterWeapons.weaponId where characters.id = 1")
-                                .ToList()
-                                .First();
+            CurrentView = "overview";
+            SetActiveContent();
+        }
 
-                rootPivot.DataContext = character;
+        private void CommandBar_Edit_Click(object sender, RoutedEventArgs e)
+        {
+            IsEditing = !IsEditing;
+            SetActiveContent();
+        }
+
+        private void CommandBar_AddArmor_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentView = "armorCreate";
+            SetActiveContent();
+        }
+
+        private void CommandBar_AddWeapon_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentView = "weaponCreate";
+            SetActiveContent();
+        }
+
+        private void CommandBar_AddSkill_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentView = "skillCreate";
+            SetActiveContent();
+        }
+
+        private void CommandBar_AddAdventuringItem_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentView = "adventuringItemCreate";
+            SetActiveContent();
+        }
+
+        private void NavPane_Overview_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentView = "overview";
+            SetActiveContent();
+        }
+
+        private void NavPane_Actions_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentView = "actions";
+            SetActiveContent();
+        }
+
+        private void SetActiveContent()
+        {
+            switch (CurrentView)
+            {
+                case "actions":
+                    if (!IsEditing)
+                    {
+                        CurrentContentControl.Content = new Actions();
+                        break;
+                    }
+                    CurrentContentControl.Content = new Actions_Edit();
+                    break;
+                case "adventuringItemCreate":
+                    break;
+                case "armorCreate":
+                    CurrentContentControl.Content = new Armor_Create();
+                    break;
+                case "skillCreate":
+                    break;
+                case "weaponCreate":
+                    break;
+                default:
+                    if (!IsEditing)
+                    {
+                        CurrentContentControl.Content = new CharacterOverview();
+                        break;
+                    }
+                    CurrentContentControl.Content = new CharacterOverview_Edit();
+                    break;
             }
         }
     }

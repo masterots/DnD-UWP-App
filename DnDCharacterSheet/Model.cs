@@ -19,12 +19,25 @@ namespace DnDCharacterSheet
         public DbSet<Weapon> Weapons { get; set; }
         public DbSet<Armor> Armor { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnConfiguring(optionsBuilder);
-            var databaseFile = Path.Combine(Windows.ApplicationModel.Package.Current.InstalledLocation.Path, "Data", "DnDCharacterSheet_CF.db");
-            optionsBuilder.UseSqlite($"Data Source={databaseFile}");
+            modelBuilder.Entity<Character>()
+                .HasMany(c => c.Weapons);
+            modelBuilder.Entity<Character>()
+                .HasMany(c => c.Armor);
+            modelBuilder.Entity<Weapon>()
+                .HasMany(w => w.Characters);
+            modelBuilder.Entity<Armor>()
+                .HasMany(a => a.Characters);
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            //var databaseFile = Path.Combine(Windows.ApplicationModel.Package.Current.InstalledLocation.Path, "Data", "DnDCharacterSheet.db");
+            //optionsBuilder.UseSqlite($"Data Source={databaseFile}");
+            var connection = @"Filename=DnDCharacterSheet_CF.db";
+            optionsBuilder.UseSqlite(connection);
+            base.OnConfiguring(optionsBuilder);
+        }
     }
 }

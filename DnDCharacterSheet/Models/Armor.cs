@@ -1,4 +1,5 @@
 ﻿using DnDCharacterSheet.Enums;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DnDCharacterSheet.Models
@@ -12,5 +13,6 @@ namespace DnDCharacterSheet.Models
         public CostType CostType { get; set; }
         public float Weight { get; set; }
         public string Note { get; set; }
+        public ICollection<Character> Characters { get; set; }
     }
 }

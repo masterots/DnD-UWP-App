@@ -1,0 +1,45 @@
+﻿<UserControl
+    x:Class="DnDCharacterSheet.Controls.CharacterOverview_Edit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DnDCharacterSheet.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    Loaded="Control_Loaded">
+
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible">
+        <StackPanel Name="CharacterOverview_Edit_UserControl">
+            <TextBox Header="Name" Text="{Binding Name}" Name="NewCharacter_Name" PlaceholderText="Name"></TextBox>
+            <TextBox Header="Strength" InputScope="Number" Text="{Binding Strength}" Name="NewCharacter_Strength" PlaceholderText="Strength"></TextBox>
+            <TextBox Header="Strength Modifier" Text="{Binding StrengthModifier}" Name="NewCharacter_StrengthModifier" PlaceholderText="StrengthModifier"></TextBox>
+            <TextBox Header="Dexterity" InputScope="NumberFullWidth" Text="{Binding Dexterity}" Name="NewCharacter_Dexterity" PlaceholderText="Dexterity"></TextBox>
+            <TextBox Header="Dexterity Modifier" Text="{Binding DexterityModifier}" Name="NewCharacter_DexterityModifier" PlaceholderText="DexterityModifier"></TextBox>
+            <TextBox Header="Constitution" Text="{Binding Constitution}" Name="NewCharacter_Constitution" PlaceholderText="Constitution"></TextBox>
+            <TextBox Header="Constitution Modifier" Text="{Binding ConstitutionModifier}" Name="NewCharacter_ConstitutionModifier" PlaceholderText="ConstitutionModifier"></TextBox>
+            <TextBox Header="Intelligence" Text="{Binding Intelligence}" Name="NewCharacter_Intelligence" PlaceholderText="Intelligence"></TextBox>
+            <TextBox Header="Intelligence Modifier" Text="{Binding IntelligenceModifier}" Name="NewCharacter_IntelligenceModifier" PlaceholderText="IntelligenceModifier"></TextBox>
+            <TextBox Header="Wisdom" Text="{Binding Wisdom}" Name="NewCharacter_Wisdom" PlaceholderText="Wisdom"></TextBox>
+            <TextBox Header="Wisdom Modifier" Text="{Binding WisdomModifier}" Name="NewCharacter_WisdomModifier" PlaceholderText="WisdomModifier"></TextBox>
+            <TextBox Text="{Binding Charisma}" Name="NewCharacter_Charisma" PlaceholderText="Charisma"></TextBox>
+            <TextBox Text="{Binding CharismaModifier}" Name="NewCharacter_CharismaModifier" PlaceholderText="CharismaModifier"></TextBox>
+            <TextBox Text="{Binding ArmorClass}" Name="NewCharacter_ArmorClass" PlaceholderText="ArmorClass"></TextBox>
+            <TextBox Text="{Binding Speed}" Name="NewCharacter_Speed" PlaceholderText="Speed"></TextBox>
+            <TextBox Text="{Binding CurrentHitPoints}" Name="NewCharacter_CurrentHitPoints" PlaceholderText="CurrentHitPoints"></TextBox>
+            <TextBox Text="{Binding TemporaryHitPoints}" Name="NewCharacter_TemporaryHitPoints" PlaceholderText="TemporaryHitPoints"></TextBox>
+            <TextBox Text="{Binding MaxHitPoints}" Name="NewCharacter_MaxHitPoints" PlaceholderText="MaxHitPoints"></TextBox>
+            <TextBox Text="{Binding Platinum}" Name="NewCharacter_Platinum" PlaceholderText="Platinum"></TextBox>
+            <TextBox Text="{Binding Gold}" Name="NewCharacter_Gold" PlaceholderText="Gold"></TextBox>
+            <TextBox Text="{Binding Electrum}" Name="NewCharacter_Electrum" PlaceholderText="Electrum"></TextBox>
+            <TextBox Text="{Binding Silver}" Name="NewCharacter_Silver" PlaceholderText="Silver"></TextBox>
+            <TextBox Text="{Binding Copper}" Name="NewCharacter_Copper" PlaceholderText="Copper"></TextBox>
+            <TextBox Text="{Binding ExperiencePoints}" Name="NewCharacter_ExperiencePoints" PlaceholderText="ExperiencePoints"></TextBox>
+            <TextBox Text="{Binding ProficiencyBonus}" Name="NewCharacter_ProficiencyBonus" PlaceholderText="ProficiencyBonus"></TextBox>
+            <ComboBox Name="NewCharacter_Armor" DisplayMemberPath="Name"></ComboBox>
+            <TextBox Name="NewCharacter_Id" Text="{Binding CharacterId}" IsEnabled="False"></TextBox>
+            <Button Click="Save_Character_Click">Add</Button>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

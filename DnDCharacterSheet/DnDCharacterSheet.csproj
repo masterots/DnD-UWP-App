@@ -95,11 +95,31 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Actions.xaml.cs">
+      <DependentUpon>Actions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Actions_Edit.xaml.cs">
+      <DependentUpon>Actions_Edit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Armor_Create.xaml.cs">
+      <DependentUpon>Armor_Create.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CharacterOverview.xaml.cs">
+      <DependentUpon>CharacterOverview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CharacterOverview_Edit.xaml.cs">
+      <DependentUpon>CharacterOverview_Edit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Enums\CostType.cs" />
     <Compile Include="Enums\WeaponType.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20170921020449_init.cs" />
+    <Compile Include="Migrations\20170921020449_init.designer.cs">
+      <DependentUpon>20170921020449_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\DnDCharacterSheetContextModelSnapshot.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Models\Armor.cs" />
     <Compile Include="Models\Character.cs" />
@@ -131,6 +151,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\Actions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Actions_Edit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Armor_Create.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CharacterOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CharacterOverview_Edit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
