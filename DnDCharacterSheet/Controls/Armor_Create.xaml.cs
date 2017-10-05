@@ -1,5 +1,6 @@
 ﻿using DnDCharacterSheet.Enums;
 using DnDCharacterSheet.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -34,6 +35,18 @@ namespace DnDCharacterSheet.Controls
             }
         }
 
+        private bool Is_Assigned_To_Character()
+        {
+            //RadioButton rb = sender as RadioButton;
+
+            using (var db = new DnDCharacterSheetContext())
+            {
+
+            }
+
+            return true;
+        }
+
         private void Add_Armor_Click(object sender, RoutedEventArgs e)
         {
             using (var db = new DnDCharacterSheetContext())
@@ -51,6 +64,26 @@ namespace DnDCharacterSheet.Controls
                 db.SaveChanges();
 
                 ArmorList.ItemsSource = db.Armor.ToList();
+            }
+        }
+
+        private void Assign_Armor(object sender, RoutedEventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+
+            using (var db = new DnDCharacterSheetContext())
+            {
+                var allArmor = db.Armor;
+                var selectedArmor = allArmor.Where(a => a.Name == rb.Tag.ToString()).First();
+                var character = db.Characters.Include(c => c.Armor).First();
+
+                foreach (Armor armor in allArmor)
+                {
+                    character.Armor.Remove(armor);
+                }
+
+                character.Armor.Add(selectedArmor);
+                db.SaveChanges();
             }
         }
     }

@@ -10,36 +10,251 @@
     d:DesignWidth="400"
     Loaded="Control_Loaded">
 
-    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible">
-        <StackPanel Name="CharacterOverview_Edit_UserControl">
-            <TextBox Header="Name" Text="{Binding Name}" Name="NewCharacter_Name" PlaceholderText="Name"></TextBox>
-            <TextBox Header="Strength" InputScope="Number" Text="{Binding Strength}" Name="NewCharacter_Strength" PlaceholderText="Strength"></TextBox>
-            <TextBox Header="Strength Modifier" Text="{Binding StrengthModifier}" Name="NewCharacter_StrengthModifier" PlaceholderText="StrengthModifier"></TextBox>
-            <TextBox Header="Dexterity" InputScope="NumberFullWidth" Text="{Binding Dexterity}" Name="NewCharacter_Dexterity" PlaceholderText="Dexterity"></TextBox>
-            <TextBox Header="Dexterity Modifier" Text="{Binding DexterityModifier}" Name="NewCharacter_DexterityModifier" PlaceholderText="DexterityModifier"></TextBox>
-            <TextBox Header="Constitution" Text="{Binding Constitution}" Name="NewCharacter_Constitution" PlaceholderText="Constitution"></TextBox>
-            <TextBox Header="Constitution Modifier" Text="{Binding ConstitutionModifier}" Name="NewCharacter_ConstitutionModifier" PlaceholderText="ConstitutionModifier"></TextBox>
-            <TextBox Header="Intelligence" Text="{Binding Intelligence}" Name="NewCharacter_Intelligence" PlaceholderText="Intelligence"></TextBox>
-            <TextBox Header="Intelligence Modifier" Text="{Binding IntelligenceModifier}" Name="NewCharacter_IntelligenceModifier" PlaceholderText="IntelligenceModifier"></TextBox>
-            <TextBox Header="Wisdom" Text="{Binding Wisdom}" Name="NewCharacter_Wisdom" PlaceholderText="Wisdom"></TextBox>
-            <TextBox Header="Wisdom Modifier" Text="{Binding WisdomModifier}" Name="NewCharacter_WisdomModifier" PlaceholderText="WisdomModifier"></TextBox>
-            <TextBox Text="{Binding Charisma}" Name="NewCharacter_Charisma" PlaceholderText="Charisma"></TextBox>
-            <TextBox Text="{Binding CharismaModifier}" Name="NewCharacter_CharismaModifier" PlaceholderText="CharismaModifier"></TextBox>
-            <TextBox Text="{Binding ArmorClass}" Name="NewCharacter_ArmorClass" PlaceholderText="ArmorClass"></TextBox>
-            <TextBox Text="{Binding Speed}" Name="NewCharacter_Speed" PlaceholderText="Speed"></TextBox>
-            <TextBox Text="{Binding CurrentHitPoints}" Name="NewCharacter_CurrentHitPoints" PlaceholderText="CurrentHitPoints"></TextBox>
-            <TextBox Text="{Binding TemporaryHitPoints}" Name="NewCharacter_TemporaryHitPoints" PlaceholderText="TemporaryHitPoints"></TextBox>
-            <TextBox Text="{Binding MaxHitPoints}" Name="NewCharacter_MaxHitPoints" PlaceholderText="MaxHitPoints"></TextBox>
-            <TextBox Text="{Binding Platinum}" Name="NewCharacter_Platinum" PlaceholderText="Platinum"></TextBox>
-            <TextBox Text="{Binding Gold}" Name="NewCharacter_Gold" PlaceholderText="Gold"></TextBox>
-            <TextBox Text="{Binding Electrum}" Name="NewCharacter_Electrum" PlaceholderText="Electrum"></TextBox>
-            <TextBox Text="{Binding Silver}" Name="NewCharacter_Silver" PlaceholderText="Silver"></TextBox>
-            <TextBox Text="{Binding Copper}" Name="NewCharacter_Copper" PlaceholderText="Copper"></TextBox>
-            <TextBox Text="{Binding ExperiencePoints}" Name="NewCharacter_ExperiencePoints" PlaceholderText="ExperiencePoints"></TextBox>
-            <TextBox Text="{Binding ProficiencyBonus}" Name="NewCharacter_ProficiencyBonus" PlaceholderText="ProficiencyBonus"></TextBox>
-            <ComboBox Name="NewCharacter_Armor" DisplayMemberPath="Name"></ComboBox>
-            <TextBox Name="NewCharacter_Id" Text="{Binding CharacterId}" IsEnabled="False"></TextBox>
-            <Button Click="Save_Character_Click">Add</Button>
-        </StackPanel>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible" Height="735">
+        <Grid Name="CharacterOverview_Edit_UserControl">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="340"/>
+                <ColumnDefinition Width="340"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="180"/>
+                <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" 
+                     Grid.Column="0" 
+                     Header="Name" 
+                    Text="{Binding Name}" 
+                    Name="NewCharacter_Name" 
+                    Margin="20,20,0,0" 
+                    PlaceholderText="Name" />
+            <TextBox Name="NewCharacter_Id" 
+                     Header="CharacterId"
+                     Grid.Row="0"
+                     Grid.Column="1"
+                         Text="{Binding CharacterId}" 
+                         Margin="20,20,0,0" 
+                         IsEnabled="False" />
+            <TextBox Header="Strength" 
+                     Grid.Row="1" 
+                     Grid.Column="0" 
+                     InputScope="Number" 
+                         Text="{Binding Strength}"
+                         Name="NewCharacter_Strength" 
+                         Margin="20,20,0,0" 
+                         PlaceholderText="Strength" />
+            <TextBox Header="Strength Modifier" 
+                     Grid.Row="1" 
+                     Grid.Column="1" 
+                         InputScope="Number" 
+                         Text="{Binding StrengthModifier}" 
+                         Name="NewCharacter_StrengthModifier" 
+                         Margin="20,20,0,0"
+                         PlaceholderText="StrengthModifier" />
+            <TextBox Header="Dexterity" 
+                     Grid.Row="2" 
+                     Grid.Column="0" 
+                         InputScope="Number" 
+                         Text="{Binding Dexterity}" 
+                         Name="NewCharacter_Dexterity"
+                         Margin="20,20,0,0"
+                         PlaceholderText="Dexterity" />
+            <TextBox Header="Dexterity Modifier" 
+                     Grid.Row="2" 
+                     Grid.Column="1" 
+                         InputScope="Number" 
+                         Text="{Binding DexterityModifier}"
+                         Name="NewCharacter_DexterityModifier"
+                         Margin="20,20,0,0" 
+                         PlaceholderText="DexterityModifier" />
+            <TextBox Header="Constitution" 
+                     Grid.Row="3" 
+                     Grid.Column="0" 
+                         InputScope="Number" 
+                         Text="{Binding Constitution}"
+                         Name="NewCharacter_Constitution"
+                         Margin="20,20,0,0"
+                         PlaceholderText="Constitution" />
+            <TextBox Header="Constitution Modifier" 
+                     Grid.Row="3" 
+                     Grid.Column="1" 
+                         InputScope="Number" 
+                         Text="{Binding ConstitutionModifier}" 
+                         Name="NewCharacter_ConstitutionModifier"
+                         Margin="20,20,0,0"
+                         PlaceholderText="ConstitutionModifier" />
+            <TextBox Header="Intelligence"
+                     Grid.Row="4" 
+                     Grid.Column="0" 
+                         InputScope="Number" 
+                         Text="{Binding Intelligence}"
+                         Name="NewCharacter_Intelligence"
+                         Margin="20,20,0,0"
+                         PlaceholderText="Intelligence" />
+            <TextBox Header="Intelligence Modifier"
+                     Grid.Row="4" 
+                     Grid.Column="1" 
+                         InputScope="Number" 
+                         Text="{Binding IntelligenceModifier}" 
+                         Name="NewCharacter_IntelligenceModifier" 
+                         Margin="20,20,0,0" 
+                         PlaceholderText="IntelligenceModifier" />
+            <TextBox Header="Wisdom" 
+                     Grid.Row="5" 
+                     Grid.Column="0" 
+                         InputScope="Number" 
+                         Text="{Binding Wisdom}" 
+                         Name="NewCharacter_Wisdom" 
+                         Margin="20,20,0,0" 
+                         PlaceholderText="Wisdom" />
+            <TextBox Header="Wisdom Modifier" 
+                     Grid.Row="5" 
+                     Grid.Column="1" 
+                         InputScope="Number" 
+                         Text="{Binding WisdomModifier}" 
+                         Name="NewCharacter_WisdomModifier" 
+                         Margin="20,20,0,0" 
+                         PlaceholderText="WisdomModifier" />
+            <TextBox Header="Charisma" 
+                     Grid.Row="6" 
+                     Grid.Column="0" 
+                         InputScope="Number" 
+                         Text="{Binding Charisma}" 
+                         Name="NewCharacter_Charisma" 
+                         Margin="20,20,0,0" 
+                         PlaceholderText="Charisma" />
+            <TextBox Header="Charisma Modifier" 
+                     Grid.Row="6" 
+                     Grid.Column="1" 
+                         InputScope="Number" 
+                         Text="{Binding CharismaModifier}" 
+                         Name="NewCharacter_CharismaModifier" 
+                         Margin="20,20,0,0" 
+                         PlaceholderText="CharismaModifier" />
+            <TextBox Header="Armor Class"
+                     Grid.Row="7" 
+                     Grid.Column="0" 
+                         InputScope="Number" 
+                         Text="{Binding ArmorClass}" 
+                         Name="NewCharacter_ArmorClass" 
+                         Margin="20,20,0,0" 
+                         PlaceholderText="ArmorClass" />
+            <TextBox Header="Speed" Text="{Binding Speed}" 
+                     Grid.Row="7" 
+                     Grid.Column="1" 
+                     InputScope="Number" 
+                         Name="NewCharacter_Speed" 
+                         Margin="20,20,0,0" 
+                         PlaceholderText="Speed" />
+            <TextBox Header="Current Hit Points" 
+                     Grid.Row="8" 
+                     Grid.Column="0" 
+                         InputScope="Number" 
+                         Text="{Binding CurrentHitPoints}" 
+                         Name="NewCharacter_CurrentHitPoints" 
+                         Margin="20,20,0,0" 
+                         PlaceholderText="CurrentHitPoints" />
+            <TextBox Header="Temporary Hit Points" 
+                     Text="{Binding TemporaryHitPoints}" 
+                     Grid.Row="8" 
+                     Grid.Column="1" 
+                         InputScope="Number" 
+                         Name="NewCharacter_TemporaryHitPoints" 
+                         Margin="20,20,0,0" 
+                         PlaceholderText="TemporaryHitPoints" />
+            <TextBox Header="Max Hit Points" 
+                     Grid.Row="9" 
+                     Grid.Column="0" 
+                         InputScope="Number" 
+                         Text="{Binding MaxHitPoints}" 
+                         Name="NewCharacter_MaxHitPoints" 
+                         Margin="20,20,0,0" 
+                         PlaceholderText="MaxHitPoints" />
+            <TextBox Header="Platinum" 
+                     Grid.Row="10" 
+                     Grid.Column="0" 
+                         InputScope="Number" 
+                         Text="{Binding Platinum}" 
+                         Name="NewCharacter_Platinum" 
+                         Margin="20,20,0,0" 
+                         PlaceholderText="Platinum" />
+            <TextBox Header="Gold"
+                     Grid.Row="10" 
+                     Grid.Column="1" 
+                         InputScope="Number" 
+                         Text="{Binding Gold}" 
+                         Name="NewCharacter_Gold" 
+                         Margin="20,20,0,0" 
+                         PlaceholderText="Gold" />
+            <TextBox Header="Electrum"
+                     Grid.Row="11" 
+                     Grid.Column="0" 
+                         InputScope="Number" 
+                         Text="{Binding Electrum}" 
+                         Name="NewCharacter_Electrum" 
+                         Margin="20,20,0,0" 
+                         PlaceholderText="Electrum" />
+            <TextBox Header="Silver" Text="{Binding Silver}" 
+                     Grid.Row="11" 
+                     Grid.Column="1" 
+                         InputScope="Number" 
+                         Name="NewCharacter_Silver" 
+                         Margin="20,20,0,0" 
+                         PlaceholderText="Silver" />
+            <TextBox Header="Copper" Text="{Binding Copper}" 
+                     Grid.Row="12" 
+                     Grid.Column="0" 
+                         InputScope="Number" 
+                         Name="NewCharacter_Copper" 
+                         Margin="20,20,0,0" 
+                         PlaceholderText="Copper" />
+            <TextBox Header="Experience Points" 
+                     Grid.Row="13" 
+                     Grid.Column="0" 
+                         InputScope="Number" 
+                         Text="{Binding ExperiencePoints}" 
+                         Name="NewCharacter_ExperiencePoints" 
+                         Margin="20,20,0,0" 
+                         PlaceholderText="ExperiencePoints" />
+            <TextBox Header="Proficiency Bonus" 
+                     Grid.Row="13" 
+                     Grid.Column="1" 
+                         InputScope="Number" 
+                         Text="{Binding ProficiencyBonus}" 
+                         Name="NewCharacter_ProficiencyBonus" 
+                         Margin="20,20,0,0" 
+                         PlaceholderText="ProficiencyBonus" />
+            <ListView Name="NewCharacter_Armor" Grid.Row="14" Grid.Column="0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <RadioButton 
+                            Content="{Binding Name}" 
+                            Tag="{Binding Name}"
+                            Click="ArmorRadioButton_Checked" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Click="Save_Character_Click"
+                     Grid.Row="15" 
+                     Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                        Margin="20,20,0,0">
+                Add
+            </Button>
+        </Grid>
     </ScrollViewer>
 </UserControl>

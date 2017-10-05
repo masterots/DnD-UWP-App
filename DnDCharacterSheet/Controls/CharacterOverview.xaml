@@ -9,7 +9,7 @@
     d:DesignHeight="300"
     d:DesignWidth="400"
     Loaded="Control_Loaded">
-    <StackPanel Name="CharacterOverviewUserControl">
+    <StackPanel Name="CharacterOverviewUserControl" Height="735">
         <TextBlock Text="{Binding Name}" FontSize="24" Margin="20"/>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -21,8 +21,8 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="435"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical" Height="Auto">
                 <TextBlock Text="Strength"
@@ -103,7 +103,7 @@
                                     HorizontalAlignment="Center"/>
             </StackPanel>
             <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical" Height="Auto">
-                <ListView Name="Armor">
+                <ListView Name="ArmorList">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Name}" />

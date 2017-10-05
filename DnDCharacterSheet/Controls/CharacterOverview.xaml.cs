@@ -1,4 +1,5 @@
 ﻿using DnDCharacterSheet.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,11 @@ namespace DnDCharacterSheet.Controls
         {
             using (var db = new DnDCharacterSheetContext())
             {
-                var character = db.Characters.FirstOrDefault();
+                var characterCount = db.Characters.Count();
+                var character = db.Characters.Include(c => c.Armor).FirstOrDefault();
 
                 CharacterOverviewUserControl.DataContext = character;
+                ArmorList.ItemsSource = character.Armor;
             }
         }
     }

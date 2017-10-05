@@ -1,4 +1,5 @@
 ﻿using DnDCharacterSheet.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,10 @@ namespace DnDCharacterSheet.Controls
 {
     public sealed partial class CharacterOverview_Edit : UserControl
     {
+        public Character CurrentCharacter;
+        public Armor CurrentCharacterArmor;
+        public RadioButton SelectedArmorRadio;
+
         public CharacterOverview_Edit()
         {
             this.InitializeComponent();
@@ -18,56 +23,64 @@ namespace DnDCharacterSheet.Controls
 
         private void Control_Loaded(object sender, RoutedEventArgs e)
         {
+            MaxHeight = Window.Current.Bounds.Height;
+
             using (var db = new DnDCharacterSheetContext())
             {
-                var character = db.Characters.FirstOrDefault();
+                var armor = db.Armor.ToList();
+                var character = db.Characters.Include(c => c.Armor).FirstOrDefault();
+                CurrentCharacter = character;
+                CurrentCharacterArmor = character.Armor.FirstOrDefault();
 
                 CharacterOverview_Edit_UserControl.DataContext = character;
+                NewCharacter_Armor.ItemsSource = armor;
+
+                //if (CurrentCharacterArmor != null) { 
+                //    NewCharacter_Armor.SelectedItem = CurrentCharacterArmor;
+                //}
             }
+        }
+
+        private void ArmorRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            SelectedArmorRadio = sender as RadioButton;
         }
 
         private void Save_Character_Click(object sender, RoutedEventArgs e)
         {
             using (var db = new DnDCharacterSheetContext())
             {
-                var selectedArmor = new List<Armor>();
-                selectedArmor.Add((Armor)NewCharacter_Armor.SelectedItem);
+                CurrentCharacter.Name = NewCharacter_Name.Text;
+                CurrentCharacter.Strength = Int32.Parse(NewCharacter_Strength.Text);
+                CurrentCharacter.StrengthModifier = Int32.Parse(NewCharacter_StrengthModifier.Text);
+                CurrentCharacter.Dexterity = Int32.Parse(NewCharacter_Dexterity.Text);
+                CurrentCharacter.DexterityModifier = Int32.Parse(NewCharacter_DexterityModifier.Text);
+                CurrentCharacter.Constitution = Int32.Parse(NewCharacter_Constitution.Text);
+                CurrentCharacter.ConstitutionModifier = Int32.Parse(NewCharacter_ConstitutionModifier.Text);
+                CurrentCharacter.Intelligence = Int32.Parse(NewCharacter_Intelligence.Text);
+                CurrentCharacter.IntelligenceModifier = Int32.Parse(NewCharacter_IntelligenceModifier.Text);
+                CurrentCharacter.Wisdom = Int32.Parse(NewCharacter_Wisdom.Text);
+                CurrentCharacter.WisdomModifier = Int32.Parse(NewCharacter_WisdomModifier.Text);
+                CurrentCharacter.Charisma = Int32.Parse(NewCharacter_Charisma.Text);
+                CurrentCharacter.CharismaModifier = Int32.Parse(NewCharacter_CharismaModifier.Text);
+                CurrentCharacter.ArmorClass = Int32.Parse(NewCharacter_ArmorClass.Text);
+                CurrentCharacter.Speed = Int32.Parse(NewCharacter_Speed.Text);
+                CurrentCharacter.CurrentHitPoints = Int32.Parse(NewCharacter_CurrentHitPoints.Text);
+                CurrentCharacter.TemporaryHitPoints = Int32.Parse(NewCharacter_TemporaryHitPoints.Text);
+                CurrentCharacter.MaxHitPoints = Int32.Parse(NewCharacter_MaxHitPoints.Text);
+                CurrentCharacter.Platinum = Int32.Parse(NewCharacter_Platinum.Text);
+                CurrentCharacter.Gold = Int32.Parse(NewCharacter_Gold.Text);
+                CurrentCharacter.Electrum = Int32.Parse(NewCharacter_Electrum.Text);
+                CurrentCharacter.Silver = Int32.Parse(NewCharacter_Silver.Text);
+                CurrentCharacter.Copper = Int32.Parse(NewCharacter_Copper.Text);
+                CurrentCharacter.ExperiencePoints = Int32.Parse(NewCharacter_ExperiencePoints.Text);
+                CurrentCharacter.ProficiencyBonus = Int32.Parse(NewCharacter_ProficiencyBonus.Text);
 
-                var character = new Character
-                {
-                    CharacterId = Int32.Parse(NewCharacter_Id.Text),
-                    Name = NewCharacter_Name.Text,
-                    Strength = Int32.Parse(NewCharacter_Strength.Text),
-                    StrengthModifier = Int32.Parse(NewCharacter_StrengthModifier.Text),
-                    Dexterity = Int32.Parse(NewCharacter_Dexterity.Text),
-                    DexterityModifier = Int32.Parse(NewCharacter_DexterityModifier.Text),
-                    Constitution = Int32.Parse(NewCharacter_Constitution.Text),
-                    ConstitutionModifier = Int32.Parse(NewCharacter_ConstitutionModifier.Text),
-                    Intelligence = Int32.Parse(NewCharacter_Intelligence.Text),
-                    IntelligenceModifier = Int32.Parse(NewCharacter_IntelligenceModifier.Text),
-                    Wisdom = Int32.Parse(NewCharacter_Wisdom.Text),
-                    WisdomModifier = Int32.Parse(NewCharacter_WisdomModifier.Text),
-                    Charisma = Int32.Parse(NewCharacter_Charisma.Text),
-                    CharismaModifier = Int32.Parse(NewCharacter_CharismaModifier.Text),
-                    ArmorClass = Int32.Parse(NewCharacter_ArmorClass.Text),
-                    Speed = Int32.Parse(NewCharacter_Speed.Text),
-                    CurrentHitPoints = Int32.Parse(NewCharacter_CurrentHitPoints.Text),
-                    TemporaryHitPoints = Int32.Parse(NewCharacter_TemporaryHitPoints.Text),
-                    MaxHitPoints = Int32.Parse(NewCharacter_MaxHitPoints.Text),
-                    Platinum = Int32.Parse(NewCharacter_Platinum.Text),
-                    Gold = Int32.Parse(NewCharacter_Gold.Text),
-                    Electrum = Int32.Parse(NewCharacter_Electrum.Text),
-                    Silver = Int32.Parse(NewCharacter_Silver.Text),
-                    Copper = Int32.Parse(NewCharacter_Copper.Text),
-                    ExperiencePoints = Int32.Parse(NewCharacter_ExperiencePoints.Text),
-                    ProficiencyBonus = Int32.Parse(NewCharacter_ProficiencyBonus.Text),
-                    //Armor = selectedArmor
-                };
-
-                db.Characters.Update(character);
+                db.Characters.Update(CurrentCharacter);
                 db.SaveChanges();
 
-                CharacterOverview_Edit_UserControl.DataContext = db.Characters.FirstOrDefault();
+                CurrentCharacter = db.Characters.FirstOrDefault();
+                CharacterOverview_Edit_UserControl.DataContext = CurrentCharacter;
             }
         }
     }

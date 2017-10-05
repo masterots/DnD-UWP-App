@@ -36,7 +36,7 @@
         <ListView Grid.Column="1" Grid.Row="0" Name="ArmorList">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Name}" />
+                    <RadioButton Content="{Binding Name}" Tag="{Binding Name}" Checked="Assign_Armor" IsChecked="{Binding Is_Assigned_To_Character, Mode=TwoWay}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
