@@ -1,0 +1,66 @@
+﻿<UserControl
+    x:Class="DnDCharacterSheet.Controls.Weapon_Create"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DnDCharacterSheet.Controls"
+    xmlns:utils="using:DnDCharacterSheet.Utils"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    Loaded="Control_Loaded">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="340"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left">
+            <TextBox Name="WeaponName" Header="Name" Margin="20,20,0,0" Width="300" PlaceholderText="Name"></TextBox>
+            <TextBox Name="WeaponCost" Header="Cost" Margin="20,20,0,0" Width="300" PlaceholderText="Cost"></TextBox>
+            <ComboBox Name="WeaponMoneyType" Header="Cost Type" Margin="20,20,0,0" Width="300"></ComboBox>
+            <TextBox Name="WeaponDamage" Header="Damage" Margin="20,20,0,0" Width="300" PlaceholderText="Cost"></TextBox>
+            <ComboBox Name="WeaponDamageType" Header="Damage Type" Margin="20,20,0,0" Width="300"></ComboBox>
+            <TextBox Name="WeaponWeight" Header="Weight" PlaceholderText="Weight (lbs.)" Margin="20,20,0,0" Width="300"></TextBox>
+            <TextBox Name="WeaponNote" 
+                  Margin="20,20,0,0" Width="300"
+                 Header="Notes"
+                 PlaceholderText="Additional information" 
+                 AcceptsReturn="True" 
+                 TextWrapping="Wrap" 
+                 Height="200"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto" />
+            <RelativePanel BorderBrush="Gray" BorderThickness="10">
+                <CheckBox Content="Light" Name="Light" Click="SetWeaponProperty_Click" />
+                <CheckBox Content="Heavy" Name="Heavy" Click="SetWeaponProperty_Click" RelativePanel.RightOf="Light" />
+                <CheckBox Content="Reach" Name="Reach" Click="SetWeaponProperty_Click" RelativePanel.Below="Light" />
+                <CheckBox Content="Special" Name="Special" Click="SetWeaponProperty_Click" RelativePanel.RightOf="Reach" />
+                <CheckBox Content="Finesse" Name="Finesse" Click="SetWeaponProperty_Click" RelativePanel.Below="Reach" />
+                <CheckBox Content="Two-handed" Name="TwoHanded" Click="SetWeaponProperty_Click" RelativePanel.RightOf="Finesse" />
+                <CheckBox Content="Loading" Name="Loading" Click="SetWeaponProperty_Click" RelativePanel.Below="Finesse" />
+                <CheckBox Content="Thrown (range 5/15)" Name="Thrown_Range_5_15" Click="SetWeaponProperty_Click" RelativePanel.RightOf="Loading" />
+                <CheckBox Content="Thrown (range 20/60)" Name="Thrown_Range_20_60" Click="SetWeaponProperty_Click" RelativePanel.Below="Loading" />
+                <CheckBox Content="Thrown (range 30/120)" Name="Thrown_Range_30_120" Click="SetWeaponProperty_Click" RelativePanel.RightOf="Thrown_Range_20_60" />
+                <CheckBox Content="Ammunition (range 25/100)" Name="Ammunition_Range_25_100" Click="SetWeaponProperty_Click" RelativePanel.Below="Thrown_Range_20_60" />
+                <CheckBox Content="Ammunition (range 30/120)" Name="Ammunition_Range_30_120" Click="SetWeaponProperty_Click" RelativePanel.RightOf="Ammunition_Range_25_100" />
+                <CheckBox Content="Ammunition (range 80/320)" Name="Ammunition_Range_80_320" Click="SetWeaponProperty_Click" RelativePanel.Below="Ammunition_Range_25_100" />
+                <CheckBox Content="Ammunition (range 100/400)" Name="Ammunition_Range_100_400" Click="SetWeaponProperty_Click" RelativePanel.RightOf="Ammunition_Range_80_320" />
+                <CheckBox Content="Ammunition (range 150/600)" Name="Ammunition_Range_150_600" Click="SetWeaponProperty_Click" RelativePanel.Below="Ammunition_Range_80_320" />
+                <CheckBox Content="Versatile 1d8" Name="Versatile_1d8" Click="SetWeaponProperty_Click" RelativePanel.RightOf="Ammunition_Range_150_600" />
+                <CheckBox Content="Versatile 1d10" Name="Versatile_1d10" Click="SetWeaponProperty_Click" RelativePanel.Below="Ammunition_Range_150_600" />
+            </RelativePanel>
+            <Button Click="Add_Weapon_Click" Width="300" HorizontalAlignment="Right" Margin="20,20,0,0">Add</Button>
+        </StackPanel>
+        <!--<ListView Grid.Column="1" Grid.Row="0" Name="WeaponList">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <RadioButton Content="{Binding Name}" Tag="{Binding NamAssign_Weapone}" Checked="" IsChecked="{Binding Is_Assigned_To_Character, Mode=TwoWay}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
+    </Grid>
+</UserControl>

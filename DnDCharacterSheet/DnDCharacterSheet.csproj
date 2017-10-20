@@ -110,8 +110,14 @@
     <Compile Include="Controls\CharacterOverview_Edit.xaml.cs">
       <DependentUpon>CharacterOverview_Edit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Weapon_Create.xaml.cs">
+      <DependentUpon>Weapon_Create.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Enums\CostType.cs" />
+    <Compile Include="Enums\DamageType.cs" />
+    <Compile Include="Enums\WeaponPropertyType.cs" />
     <Compile Include="Enums\WeaponType.cs" />
+    <Compile Include="Extensions\EnumerationExtension.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -126,6 +132,7 @@
     <Compile Include="Models\CharacterWeapon.cs" />
     <Compile Include="Models\Weapon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\EnumConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -205,6 +212,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\CharacterOverview_Edit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Weapon_Create.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

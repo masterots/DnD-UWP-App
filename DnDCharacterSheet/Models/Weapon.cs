@@ -15,7 +15,7 @@ namespace DnDCharacterSheet.Models
         public int WeaponId { get; set; }
         public string Name { get; set; }
         public int Cost { get; set; }
-        public string CostType { get; set; }
+        public CostType CostType { get; set; }
         public string Damage { get; set; }
         public string DamageType { get; set; }
         public float Weight { get; set; }

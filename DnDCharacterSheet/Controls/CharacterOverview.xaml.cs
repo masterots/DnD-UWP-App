@@ -25,7 +25,9 @@ namespace DnDCharacterSheet.Controls
                 var character = db.Characters.Include(c => c.Armor).FirstOrDefault();
 
                 CharacterOverviewUserControl.DataContext = character;
-                ArmorList.ItemsSource = character.Armor;
+                if (character != null) { 
+                    ArmorList.ItemsSource = character.Armor;
+                }
             }
         }
     }

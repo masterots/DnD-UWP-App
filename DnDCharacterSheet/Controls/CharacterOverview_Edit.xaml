@@ -237,17 +237,6 @@
                          Name="NewCharacter_ProficiencyBonus" 
                          Margin="20,20,0,0" 
                          PlaceholderText="ProficiencyBonus" />
-            <ListView Name="NewCharacter_Armor" Grid.Row="14" Grid.Column="0">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <RadioButton 
-                            Content="{Binding Name}" 
-                            Tag="{Binding Name}"
-                            Click="ArmorRadioButton_Checked" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
             <Button Click="Save_Character_Click"
                      Grid.Row="15" 
                      Grid.Column="0"

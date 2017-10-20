@@ -102,6 +102,7 @@ namespace DnDCharacterSheet
                 case "skillCreate":
                     break;
                 case "weaponCreate":
+                    CurrentContentControl.Content = new Weapon_Create();
                     break;
                 default:
                     if (!IsEditing)
